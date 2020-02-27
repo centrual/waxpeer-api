@@ -36,9 +36,7 @@ import {CheckAvailabilityQuerystringParameters} from "./declarations/rest_reques
 import {CheckAvailabilityRestResponse} from "./declarations/rest_responses/CheckAvailabilityRestResponse";
 import {CheckAvailabilityEndpoint} from "./endpoints/CheckAvailabilityEndpoint";
 import {GetItemsListQuerystringParameters} from "./declarations/rest_requests/GetItemsListQuerystringParameters";
-import {CSGOListItemLevel0, CSGOListItemLevel1, CSGOListItemLevel2, GetItemsListRestResponse, OtherListItemLevel0, OtherListItemLevel1, OtherListItemLevel2, PossibleListItemTypes, VGOListItemLevel0, VGOListItemLevel1, VGOListItemLevel2} from "./declarations/rest_responses/GetItemsListRestResponse";
-import {EItemListGameType} from "./declarations/enums/EItemListGameType";
-import {EItemListDetailLevel} from "./declarations/enums/EItemListDetailLevel";
+import {GetItemsListRestResponse} from "./declarations/rest_responses/GetItemsListRestResponse";
 import {GetItemsListEndpoint} from "./endpoints/GetItemsListEndpoint";
 import {FetchMyInventoryRestResponse} from "./declarations/rest_responses/FetchMyInventoryRestResponse";
 import {FetchMyInventoryEndpoint} from "./endpoints/FetchMyInventoryEndpoint";
@@ -196,23 +194,9 @@ export class WaxpeerApi {
     return await this.CallAxios<CheckAvailabilityRestResponse>(parsedEndpoint);
   }
 
-  public async GetItemsList(): Promise<GetItemsListRestResponse<CSGOListItemLevel0>>;
-
-  public async GetItemsList(queryParameters: GetItemsListQuerystringParameters & { game: EItemListGameType.CSGO; minified?: EItemListDetailLevel.DEFAULT }): Promise<GetItemsListRestResponse<CSGOListItemLevel0>>;
-  public async GetItemsList(queryParameters: GetItemsListQuerystringParameters & { game: EItemListGameType.CSGO; minified: EItemListDetailLevel.MORE_DETAILED }): Promise<GetItemsListRestResponse<CSGOListItemLevel1>>;
-  public async GetItemsList(queryParameters: GetItemsListQuerystringParameters & { game: EItemListGameType.CSGO; minified: EItemListDetailLevel.MOST_DETAILED }): Promise<GetItemsListRestResponse<CSGOListItemLevel2>>;
-
-  public async GetItemsList(queryParameters: GetItemsListQuerystringParameters & { game: EItemListGameType.VGO; minified?: EItemListDetailLevel.DEFAULT }): Promise<GetItemsListRestResponse<VGOListItemLevel0>>;
-  public async GetItemsList(queryParameters: GetItemsListQuerystringParameters & { game: EItemListGameType.VGO; minified: EItemListDetailLevel.MORE_DETAILED }): Promise<GetItemsListRestResponse<VGOListItemLevel1>>;
-  public async GetItemsList(queryParameters: GetItemsListQuerystringParameters & { game: EItemListGameType.VGO; minified: EItemListDetailLevel.MOST_DETAILED }): Promise<GetItemsListRestResponse<VGOListItemLevel2>>;
-
-  public async GetItemsList(queryParameters: GetItemsListQuerystringParameters & { minified?: EItemListDetailLevel.DEFAULT }): Promise<GetItemsListRestResponse<OtherListItemLevel0>>;
-  public async GetItemsList(queryParameters: GetItemsListQuerystringParameters & { minified: EItemListDetailLevel.MORE_DETAILED }): Promise<GetItemsListRestResponse<OtherListItemLevel1>>;
-  public async GetItemsList(queryParameters: GetItemsListQuerystringParameters & { minified: EItemListDetailLevel.MOST_DETAILED }): Promise<GetItemsListRestResponse<OtherListItemLevel2>>;
-
-  public async GetItemsList(queryParameters?: GetItemsListQuerystringParameters): Promise<GetItemsListRestResponse<PossibleListItemTypes>> {
+  public async GetItemsList(queryParameters?: GetItemsListQuerystringParameters): Promise<GetItemsListRestResponse> {
     const parsedEndpoint = new GetItemsListEndpoint(this.Options.ApiKey).Build(queryParameters);
-    return await this.CallAxios<GetItemsListRestResponse<PossibleListItemTypes>>(parsedEndpoint);
+    return await this.CallAxios<GetItemsListRestResponse>(parsedEndpoint);
   }
 
   public async FetchMyInventory(queryParameters?: CommonQuerystringParameters): Promise<FetchMyInventoryRestResponse> {
