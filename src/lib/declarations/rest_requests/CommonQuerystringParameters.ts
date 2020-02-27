@@ -1,3 +1,3 @@
 export interface CommonQuerystringParameters {
-  api: string;
+  api?: string;
 }
