@@ -1,0 +1,42 @@
+{
+  "name": "waxpeer-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "description": "API Helper for waxpeer.com",
+  "repository": "https://github.com/centrual/waxpeer-api.git",
+  "author": {
+    "name": "Oğuz Özcan",
+    "email": "hello@oguzozcan.com",
+    "url": "https://oguzozcan.com/"
+  },
+  "keywords": [
+    "waxpeer",
+    "api",
+    "helper",
+    "csgo"
+  ],
+  "scripts": {
+    "build": "del-cli dist && tsc",
+    "test": "jest",
+    "prepub": "del-cli dist && tsc && cpy package.json dist && cpy README.md dist && cpy .npmignore dist && cpy LICENSE dist"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "axios-rate-limit": "^1.2.1",
+    "bignumber.js": "^9.0.0",
+    "ts-error": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.1.3",
+    "@types/node": "^13.7.6",
+    "@typescript-eslint/eslint-plugin": "^2.21.0",
+    "@typescript-eslint/parser": "^2.21.0",
+    "cpy-cli": "^3.1.0",
+    "del-cli": "^3.0.0",
+    "eslint": "^6.8.0",
+    "jest": "^25.1.0",
+    "ts-jest": "^25.2.1",
+    "typescript": "^3.8.2"
+  }
+}
