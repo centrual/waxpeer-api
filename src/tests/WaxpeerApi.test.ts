@@ -27,4 +27,9 @@ describe('Utils', () => {
     const result = Utils.StringifyParsedTradelink(parsedTradelink);
     expect(result).toBe(`https://steamcommunity.com/tradeoffer/new/?partner=test&token=test`);
   });
+
+  it('should IsSteamTradelinkValid work', () => {
+    const result = Utils.IsSteamTradelinkValid(`https://steamcommunity.com/tradeoffer/new/?partner=0123456789&token=testtest`);
+    expect(result).toBe(true);
+  });
 });

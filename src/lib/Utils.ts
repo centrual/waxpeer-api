@@ -3,11 +3,15 @@ import {InvalidTradelinkError} from "./errors/InvalidTradelinkError";
 import {ParsedTradelink} from "./declarations/ParsedTradelink";
 
 export class UtilsClass {
-  public ParseSteamTradelink(tradeLink: string): ParsedTradelink {
-    const tradeUrlRegex = /^https:\/\/steamcommunity.com\/tradeoffer\/new\/\?partner=([0-9]{6,32})&token=([a-z0-9]{3,12})$/i;
+  private static tradeUrlRegex = /^https:\/\/steamcommunity.com\/tradeoffer\/new\/\?partner=([0-9]{6,32})&token=([a-z0-9]{3,12})$/i;
 
-    if (tradeUrlRegex.test(tradeLink)) {
-      const executed = tradeUrlRegex.exec(tradeLink);
+  public IsSteamTradelinkValid(tradeLink: string): boolean {
+    return UtilsClass.tradeUrlRegex.test(tradeLink);
+  }
+
+  public ParseSteamTradelink(tradeLink: string): ParsedTradelink {
+    if( this.IsSteamTradelinkValid(tradeLink) ) {
+      const executed = UtilsClass.tradeUrlRegex.exec(tradeLink);
 
       if (executed !== null) {
         return {
