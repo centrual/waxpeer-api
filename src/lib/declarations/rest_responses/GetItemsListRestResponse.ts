@@ -1,4 +1,6 @@
 import {BaseErrorRestResponse, BaseSuccessRestResponse} from "./BaseRestResponse";
+import {EItemGrade} from "../enums/EItemGrade";
+import {EItemBrands} from "../enums/EItemBrands";
 
 export interface ListItem {
   item_id: string;
@@ -7,11 +9,11 @@ export interface ListItem {
   name: string;
 
   steam_price?: number;
-  type?: string;
+  type?: EItemGrade;
   best_deals?: number;
   discount?: number;
 
-  brand?: null | string;
+  brand?: null | EItemBrands;
   float?: null | string;
 }
 
