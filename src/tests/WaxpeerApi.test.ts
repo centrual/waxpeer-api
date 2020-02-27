@@ -8,9 +8,14 @@ describe('Utils', () => {
     expect(tradeObject.token).toBe('abc123ABC');
   });
 
-  it('should FormatPrice convert price correctly', () => {
-    const result = Utils.FormatPrice(5.14);
+  it('should ConvertPriceToCoins convert correctly', () => {
+    const result = Utils.ConvertPriceToCoins(5.14);
     expect(result).toBe(5140);
+  });
+
+  it('should ConvertCoinsToPrice convert correctly', () => {
+    const result = Utils.ConvertCoinsToPrice(5140);
+    expect(result).toBe(5.14);
   });
 
   it('should GetFullCSGOItemImagePath work', () => {

@@ -32,8 +32,12 @@ export class UtilsClass {
     return `https://steamcommunity-a.akamaihd.net/economy/image/${imageName}`;
   }
 
-  public FormatPrice(floatPrice: number): number {
+  public ConvertPriceToCoins(floatPrice: number): number {
     return Math.ceil(new BigNumber(floatPrice).multipliedBy(1000).toNumber());
+  }
+
+  public ConvertCoinsToPrice(coins: number): number {
+    return new BigNumber(coins).dividedBy(1000).toNumber();
   }
 }
 
