@@ -20,6 +20,10 @@ export class UtilsClass {
     throw new InvalidTradelinkError();
   }
 
+  public StringifyParsedTradelink( parsedTradelink: ParsedTradelink ): string {
+    return `https://steamcommunity.com/tradeoffer/new/?partner=${parsedTradelink.partner}&token=${parsedTradelink.token}`;
+  }
+
   public GetFullCSGOItemImagePath(imageName: string): string {
     return `https://steamcommunity-a.akamaihd.net/economy/image/${imageName}`;
   }

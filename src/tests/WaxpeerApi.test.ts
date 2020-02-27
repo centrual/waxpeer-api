@@ -1,4 +1,5 @@
 import {Utils} from "../lib/Utils";
+import {ParsedTradelink} from "../lib/declarations/ParsedTradelink";
 
 describe('Utils', () => {
   it('should GetTradeObject method make trade object', () => {
@@ -15,5 +16,15 @@ describe('Utils', () => {
   it('should GetFullCSGOItemImagePath work', () => {
     const result = Utils.GetFullCSGOItemImagePath('test');
     expect(result).toBe('https://steamcommunity-a.akamaihd.net/economy/image/test');
+  });
+
+  it('should StringifyParsedTradelink work', () => {
+    const parsedTradelink: ParsedTradelink = {
+      partner: 'test',
+      token: 'test'
+    };
+
+    const result = Utils.StringifyParsedTradelink(parsedTradelink);
+    expect(result).toBe(`https://steamcommunity.com/tradeoffer/new/?partner=test&token=test`);
   });
 });
