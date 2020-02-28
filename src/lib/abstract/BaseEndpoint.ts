@@ -23,5 +23,7 @@ export abstract class BaseEndpoint {
         }
       }
     }
+
+    return selectedParameters;
   }
 }

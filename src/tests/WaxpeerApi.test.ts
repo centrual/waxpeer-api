@@ -15,10 +15,11 @@ beforeAll((doneCallback) => {
 
 describe('Api', () => {
   it('should fetch item list', async () => {
-    const result = await waxpeerApi.GetItemsList({
+    const params = {
       game: EItemListGameType.CSGO,
       minified: EItemListDetailLevel.MOST_DETAILED
-    });
+    };
+    const result = await waxpeerApi.GetItemsList(params);
 
     expect(result.success).toBe(true);
   });
