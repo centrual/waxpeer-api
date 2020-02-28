@@ -1,5 +1,28 @@
 import {Utils} from "../lib/Utils";
 import {ParsedTradelink} from "../lib/declarations/ParsedTradelink";
+import {WaxpeerApi} from "../lib/WaxpeerApi";
+import {EItemListGameType} from "../lib/declarations/enums/EItemListGameType";
+import {EItemListDetailLevel} from "../lib/declarations/enums/EItemListDetailLevel";
+
+let waxpeerApi: WaxpeerApi;
+
+beforeAll((doneCallback) => {
+  waxpeerApi = new WaxpeerApi({
+    ApiKey: process.env.API_KEY
+  });
+  doneCallback();
+});
+
+describe('Api', () => {
+  it('should fetch item list', async () => {
+    const result = await waxpeerApi.GetItemsList({
+      game: EItemListGameType.CSGO,
+      minified: EItemListDetailLevel.MOST_DETAILED
+    });
+
+    expect(result.success).toBe(true);
+  });
+});
 
 describe('Utils', () => {
   it('should GetTradeObject method make trade object', () => {

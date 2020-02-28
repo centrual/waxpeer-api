@@ -9,16 +9,7 @@ export abstract class BaseGetEndpointQuerystringRequired<IQueryParameters> exten
   }
 
   Build(queryParameters: IQueryParameters): ParsedEndpoint {
-    const selectedParameters: object = {};
-
-    if (typeof queryParameters !== 'undefined') {
-      for (const [key, val] of Object.entries(queryParameters)) {
-        if (typeof val !== 'undefined') {
-          Object.defineProperty(selectedParameters, key, val);
-        }
-      }
-    }
-
+    const selectedParameters = this.GetBuildParameters(queryParameters);
     const parsedQueryParameters = {api: this.ApiKey, ...selectedParameters};
 
     return {
