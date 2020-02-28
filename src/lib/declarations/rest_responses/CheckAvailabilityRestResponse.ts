@@ -9,7 +9,7 @@ export interface ItemAvailability {
 }
 
 interface CheckAvailabilitySuccessRestResponse extends BaseSuccessRestResponse {
-  data: ItemAvailability[];
+  items: ItemAvailability[];
 }
 
 export type CheckAvailabilityRestResponse = CheckAvailabilitySuccessRestResponse | BaseErrorRestResponse;
