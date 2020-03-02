@@ -5,8 +5,13 @@ export enum EItemGrade {
   RESTRICTED = 'Restricted',
   CLASSIFIED = 'Classified',
   COVERT = 'Covert',
-  EXTRAORDINARY = 'Extraordinary',
   EXCEEDINGLY_RARE = 'Exceedingly Rare',
+
+  HIGH_GRADE = 'High Grade',
+  REMARKABLE = 'Remarkable',
+  EXOTIC = 'Exotic',
+  EXTRAORDINARY = 'Extraordinary',
+
+  SOUVENIR = 'Souvenir',
   CONTRABAND = 'Contraband',
-  SOUVENIR = 'Souvenir'
 }
